@@ -1,5 +1,6 @@
 const Post = require('../models/post_model')
 const User = require("../models/user_model");
+const Comment = require("../models/comment_model")
 
 exports.createPost = async (req, res) => {
     try {
@@ -126,10 +127,13 @@ exports.deletePost = async (req, res) => {
         }
 
         await Post.findByIdAndDelete(findPost._id)
+        // When a post is deleted, all comments attached to it should also be deleted
+        await Comment.deleteMany({ postId: findPost._id })
         res.status(200).send({
             success: true,
             message: "Post Deleted"
         })
+
     } catch (error) {
         res.status(500).send({
             success: false,

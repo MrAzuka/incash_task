@@ -1,5 +1,4 @@
 const Post = require('../models/post_model')
-const User = require("../models/user_model")
 const Comment = require("../models/comment_model")
 
 exports.createComment = async (req, res) => {
@@ -93,6 +92,7 @@ exports.deleteComment = async (req, res) => {
         // post that recieved the comment.
         // Or the author of the comment. They are both allowed to delete the comment
         let findAuthorOfPost = await Post.findOne({ _id: findComment.postId }).populate('userId')
+        // Converted all ObjectID to strings to be able to compare
         let user = (JSON.stringify(id) === JSON.stringify(findComment.userId)) || (JSON.stringify(id) === JSON.stringify(findAuthorOfPost.userId._id))
 
         if (!user) {
