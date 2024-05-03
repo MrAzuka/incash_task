@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken")
 
-
 exports.userRegister = async (req, res) => {
     try {
         const {
@@ -46,7 +45,8 @@ exports.userLogin = async (req, res) => {
             userID, // user can login with either username or email
             password
         } = req.body;
-
+        body('password').notEmpty().trim()
+        body('userID').notEmpty().trim()
         //check that email and password were sent
         if (!userID && !password) {
             return res.status(400).send({

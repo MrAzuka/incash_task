@@ -22,7 +22,7 @@ This API is an API that provides users with ability to create post/short article
 - Npm
 
 ## Installation
-Make sure to have all the technologies installed and then clone the repository. Then you run `npm install` to install all the project dependecies and then run `npm run dev`.If you prefer to first build, run npm run build and the npm start. The api will then be available on your local machine at `http://localhost:5000`.
+Make sure to have all the technologies installed and then clone the repository. Then you run `npm install` to install all the project dependecies and then run `npm run dev`. The api will then be available on your local machine at `http://localhost:5000`.
 
 ## Endpoints
 
