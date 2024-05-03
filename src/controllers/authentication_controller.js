@@ -28,7 +28,7 @@ exports.userRegister = async (req, res) => {
             password,
         });
 
-        return res.status(201).json({
+        return res.status(201).send({
             success: true,
             message: "User Registered Successfully"
         });
@@ -49,7 +49,7 @@ exports.userLogin = async (req, res) => {
 
         //check that email and password were sent
         if (!userID && !password) {
-            return res.status(400).json({
+            return res.status(400).send({
                 message: "login details are required"
             });
         }
@@ -79,8 +79,9 @@ exports.userLogin = async (req, res) => {
         }
         let id = user._id
         let userEmail = user.email
+        let username = user.username
         //generate an jwt token for the user.
-        const userToken = jwt.sign({ id, userEmail }, process.env.JWT_SECRET, {
+        const userToken = jwt.sign({ id, userEmail, username }, process.env.JWT_SECRET, {
             expiresIn: process.env.JWT_EXPIRES,
         });
 

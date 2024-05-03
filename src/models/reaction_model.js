@@ -1,16 +1,17 @@
 const {
     Schema,
-    model
+    model,
+    Types
 } = require('mongoose')
 
 
 const reactionSchema = new Schema({
     postId: {
-        type: ObjectId,
+        type: Types.ObjectId,
         ref: 'Post',
     },
     userId: {
-        type: ObjectId,
+        type: Types.ObjectId,
         ref: 'User'
     },
     like: {

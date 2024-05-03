@@ -1,6 +1,7 @@
 const {
     Schema,
-    model
+    model,
+    Types
 } = require('mongoose')
 
 const postSchema = new Schema({
@@ -9,7 +10,7 @@ const postSchema = new Schema({
         trim: true
     },
     userId: {
-        type: ObjectId,
+        type: Types.ObjectId,
         ref: 'User'
     },
     likeCount: {

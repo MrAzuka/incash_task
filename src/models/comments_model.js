@@ -1,6 +1,7 @@
 const {
     Schema,
-    model
+    model,
+    Types
 } = require('mongoose')
 
 const commentSchema = new Schema({
@@ -9,11 +10,11 @@ const commentSchema = new Schema({
         trim: true
     },
     postId: {
-        type: ObjectId,
+        type: Types.ObjectId,
         ref: 'Post'
     },
     userId: {
-        type: ObjectId,
+        type: Types.ObjectId,
         ref: 'User'
     },
     metadata: {
