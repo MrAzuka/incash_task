@@ -125,7 +125,7 @@ exports.deletePost = async (req, res) => {
             });
         }
 
-        const getArticle = await Post.findByIdAndDelete(findPost._id)
+        await Post.findByIdAndDelete(findPost._id)
         res.status(200).send({
             success: true,
             message: "Post Deleted"

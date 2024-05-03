@@ -10,6 +10,7 @@ const { connectToDB } = require('./services/db')
 // Import routes
 const authRoute = require("../src/routes/authentication_route")
 const postRoute = require("../src/routes/post_route")
+const commentRoute = require("../src/routes/comment_route")
 
 // Initialize App
 const app = express()
@@ -38,6 +39,7 @@ app.use(function (req, res, next) {
 
 // Use Routes
 app.use(authRoute)
-app.use(postRoute)
+app.use('/post', postRoute)
+app.use('/comment', commentRoute)
 
 module.exports = app
